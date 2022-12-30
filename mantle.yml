@@ -1,0 +1,57 @@
+# Welcome to your very first mantle-with-roblox-ts project (if it's the first time you're copying this template)
+# you'll need to modify some configuration values. If you want more information about overall
+# experience configuration, head to: https://mantledeploy.vercel.app/docs/configuration#target
+
+owner: personal
+
+# If it's a group, you need to change it to this:
+# owner:
+#   group: group_id
+
+environments:
+  - label: dev
+    branches: [dev, dev/*]
+    targetNamePrefix: 
+      custom: 'Development: ' # This can be changed!
+    targetAccess: private
+
+  - label: prod
+    branches: [main]
+    targetAccess: public
+
+target:
+  experience:
+    configuration:
+      genre: building
+      privateServers:
+        price: 100
+      enableStudioAccessToApis: true
+      playableDevices: [computer, phone, tablet]
+
+    places:
+      start:
+        file: game.rbxlx # Change this to whatever your rojo output build will look like as for the main place, default is game.rbxlx, but this can be changed in the workflows
+        configuration:
+
+          name: Mantle project template
+          description: |-
+              Deployment made with Mantle and GitHub Actions.
+
+              Place under development!
+
+          maxPlayerCount: 5
+          serverFill: maximum
+
+    passes:
+      testingPass:
+        name: 'Mantle-made gamepass'
+        description: Mantle is a nice tool, you can even upload gamepasses with it!
+        icon: art/gamepass-icon.png # A nice capybara!
+        price: 100
+
+# The remote state information needs to be changed ALL
+state:
+  remote:
+    region: us-east-2 # Change the region to the bucket region you selected when you created it.
+    bucket: mantle-rbx-ts-template # Change this to your bucket key created.
+    key: template # Do as you wish with this.

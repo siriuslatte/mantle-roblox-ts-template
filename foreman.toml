@@ -1,0 +1,4 @@
+[tools]
+mantle = { source = "blake-mealey/mantle", version = "0.11.5" }
+rojo = { source = "rojo-rbx/rojo", version = "7" }
+remodel = { source = "rojo-rbx/remodel", version = "0.11.0" }

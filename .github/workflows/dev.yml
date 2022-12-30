@@ -1,0 +1,58 @@
+name: Mantle deployment development
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - 'dev'
+      - 'dev/*'
+
+jobs:
+  development:
+    name: |
+      Dependencies installation + build and deployment for the dev place.
+
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Roblox-ts installation
+        run: |
+          npm i roblox-ts@2.0.4
+
+      - name: Dependencies
+        run: npm ci
+
+      - name: Compilation
+        shell: bash
+        run: npx rbxtsc --verbose
+
+      - uses: Roblox/setup-foreman@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remodel
+        run: remodel run scripts/remodel-dev.lua
+        env:
+          REMODEL_AUTH: ${{ secrets.ROBLOSECURITY }}
+        
+      - name: Rojo build
+        run: rojo build --output game.rbxlx
+
+      - name: Mantle deploy
+        run: mantle deploy --environment dev
+        env:
+          ROBLOSECURITY: ${{ secrets.ROBLOSECURITY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

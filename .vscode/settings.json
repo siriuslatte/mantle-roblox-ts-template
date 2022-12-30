@@ -1,0 +1,22 @@
+{
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"files.eol": "\n",
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+		"editor.formatOnSave": true
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+		"editor.formatOnSave": true
+	},
+	"eslint.run": "onType",
+<<<<<<< HEAD
+	"eslint.format.enable": true
+}
+=======
+	"eslint.format.enable": true,
+	"yaml.schemas": {
+		"https://json.schemastore.org/github-workflow.json": "file:///Users/ademirsanchez/Desktop/tycoon-project/.github/workflows/deploy.yml",
+	}
+}
+>>>>>>> 635e549 (workflows start up and framework installation)

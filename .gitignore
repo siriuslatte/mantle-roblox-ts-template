@@ -1,0 +1,13 @@
+# Non-necessary
+/node_modules
+/out
+/include
+
+# Mac users
+.DS_Store
+
+# Roblox places
+*.rbxlx
+
+# Build info
+*.tsbuildinfo
